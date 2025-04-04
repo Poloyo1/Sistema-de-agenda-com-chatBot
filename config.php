@@ -1,10 +1,24 @@
 <?php 
-$hostname = "localhost";
-$bancodedados = "agenda_bd";
-$usuario = "root";
-$senha = "";
+$host = getenv('MYSQLHOST');
+$user = getenv('MYSQLUSER');
+$pass = getenv('MYSQLPASSWORD');
+$db   = getenv('MYSQLDATABASE');
+$port = getenv('MYSQLPORT');
 
-$mysqli = new mysqli($hostname, $usuario, $senha, $bancodedados);
+$conn = new mysqli($host, $user, $pass, $db, $port);
+if ($conn->connect_error) {
+    die("Erro na conexão: " . $conn->connect_error);
+}
+
+$sql = file_get_contents('agenda_bd.sql');
+
+if ($conn->multi_query($sql)) {
+    echo "Banco importado com sucesso!";
+} else {
+    echo "Erro: " . $conn->error;
+}
+
+$conn->close();
 
 
 function loadEnv($filePath) {
