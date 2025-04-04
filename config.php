@@ -18,7 +18,6 @@ if ($mysqli ->multi_query($sql)) {
     echo "Erro: " . $mysqli ->error;
 }
 
-$mysqli ->close();
 
 
 function loadEnv($filePath) {
