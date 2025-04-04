@@ -7,7 +7,7 @@ $port = 3306;
 
 $mysqli  = new mysqli($host, $user, $pass, $db, $port);
 if ($mysqli->connect_error) {
-    die("Erro na conexão: " . $mysqli ->mysqli ect_error);
+    die("Erro na conexão: " . $mysqli->connect_error);
 }
 
 $sql = file_get_contents('agenda_bd.sql');
