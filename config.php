@@ -5,20 +5,20 @@ $pass = 'jlhxdaTtzZMaQZMNmqRzDWlYMtrKsKSd';
 $db   = 'railway';
 $port = 3306;
 
-$conn = new mysqli($host, $user, $pass, $db, $port);
-if ($conn->connect_error) {
-    die("Erro na conexão: " . $conn->connect_error);
+$mysqli  = new mysqli($host, $user, $pass, $db, $port);
+if ($mysqli ->mysqli ect_error) {
+    die("Erro na conexão: " . $mysqli ->mysqli ect_error);
 }
 
 $sql = file_get_contents('agenda_bd.sql');
 
-if ($conn->multi_query($sql)) {
+if ($mysqli ->multi_query($sql)) {
     echo "Banco importado com sucesso!";
 } else {
-    echo "Erro: " . $conn->error;
+    echo "Erro: " . $mysqli ->error;
 }
 
-$conn->close();
+$mysqli ->close();
 
 
 function loadEnv($filePath) {
