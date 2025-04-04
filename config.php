@@ -6,17 +6,6 @@ $db   = 'railway';
 $port = 3306;
 
 $mysqli  = new mysqli($host, $user, $pass, $db, $port);
-if ($mysqli->connect_error) {
-    die("Erro na conexão: " . $mysqli->connect_error);
-}
-
-$sql = file_get_contents('agenda_bd.sql');
-
-if ($mysqli ->multi_query($sql)) {
-    echo "Banco importado com sucesso!";
-} else {
-    echo "Erro: " . $mysqli ->error;
-}
 
 
 
@@ -44,7 +33,7 @@ function loadEnv($filePath) {
 loadEnv(__DIR__ . '/.env');
 
 // Acessando a variável
-$apiKey = $_ENV['API_KEY'];
-$clientId = $_ENV['CLIENT_ID'];
+$apiKey = getenv('API_KEY');
+$clientId = getenv('CLIENT_ID');
 
 ?>
