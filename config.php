@@ -6,7 +6,7 @@ $db   = 'railway';
 $port = 3306;
 
 $mysqli  = new mysqli($host, $user, $pass, $db, $port);
-if ($mysqli ->mysqli ect_error) {
+if ($mysqli->connect_error) {
     die("Erro na conexão: " . $mysqli ->mysqli ect_error);
 }
 
